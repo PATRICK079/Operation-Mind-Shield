@@ -3,27 +3,24 @@ import numpy as np
 import joblib
 import traceback
 
-# Load model, scaler, and column names
-try:
-    @st.cache_resource(show_spinner="Loading model")
-    def load_model():
-        return joblib.load("final_model_gb.pk1")
+@st.cache_resource(show_spinner = "Loading model")
+def load_model():
+    model = joblib.load("/Users/sot/Downloads/final_model_gb.pk1")
+    return model
 
-    @st.cache_resource(show_spinner="Loading scaler")
-    def load_scaler():
-        return joblib.load("final_scaler_gb.pk1")
+@st.cache_resource(show_spinner = "Loading scaler")
+def load_scaler():
+    scaler = joblib.load("/Users/sot/Downloads/final_scaler_gb.pk1")
+    return scaler
 
-    @st.cache_resource(show_spinner="Loading col")
-    def load_col():
-        return joblib.load("col_names_gb.pk1")
+@st.cache_resource(show_spinner = "Loading col")
+def load_col():
+    col_name  = joblib.load("/Users/sot/Downloads/col_names_gb.pk1")
+    return col_name
 
-    model = load_model()
-    scaler = load_scaler()
-    col_names = load_col()
 
-except Exception as e:
-    st.error(f"Error loading model or scaler: {e}")
-    st.stop()  # Stops the app if the model or scaler cannot be loaded
+model = load_model()
+scaler = load_scaler()
 
 # Application Information
 st.write("""
@@ -70,25 +67,25 @@ bp = 1 if behavioral_problems == 'Yes' else 0
 
 # Run prediction model and show result
 if st.button('Run Prediction Model'):
-    try:
-        # Convert inputs to float
-        fa = float(fa)
-        adl = float(adl)
-        mmse = float(mmse)
+    if model is None or scaler is None:
+        st.error("The model or scaler is not available. Please check for errors in loading.")
+    else:
+        try:
+            # Convert inputs to float
+            fa = float(fa)
+            adl = float(adl)
+            mmse = float(mmse)
 
-        # Validate the input ranges
-        if not (0 <= fa <= 10):
-            st.error("Functional Assessment Score must be between 0 and 10.")
-        elif not (0 <= adl <= 10):
-            st.error("ADL Score must be between 0 and 10.")
-        elif not (0 <= mmse <= 30):
-            st.error("MMSE Score must be between 0 and 30.")
-        else:
-            # Prepare and scale the input data
-            input_data = np.array([[fa, adl, mmse, mc, bp]])
-            if input_data.shape[1] != 5:
-                st.error(f"Unexpected input shape: expected 5 features, but got {input_data.shape[1]}")
+            # Validate the input ranges
+            if not (0 <= fa <= 10):
+                st.error("Functional Assessment Score must be between 0 and 10.")
+            elif not (0 <= adl <= 10):
+                st.error("ADL Score must be between 0 and 10.")
+            elif not (0 <= mmse <= 30):
+                st.error("MMSE Score must be between 0 and 30.")
             else:
+                # Prepare and scale the input data
+                input_data = np.array([[fa, adl, mmse, mc, bp]])
                 input_data_scaled = scaler.transform(input_data)
 
                 # Make prediction
@@ -100,7 +97,5 @@ if st.button('Run Prediction Model'):
                 else:
                     st.success("Negative Alzheimer's diagnosis likely.")
 
-    except ValueError:
-        st.error("Please ensure that all inputs are numeric.")
-    except Exception as e:
-        st.error(f"An error occurred during prediction: {traceback.format_exc()}")
+        except ValueError:
+            st.error("Please ensure that all inputs are numeric.")
