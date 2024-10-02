@@ -18,9 +18,9 @@ def load_col():
     col_name  = joblib.load("col_names_gb.pk1")
     return col_name
 
- model = load_model()
- scaler = load_scaler()
- col_names = load_col()
+model = load_model()
+scaler = load_scaler()
+col_names = load_col()
 
 # Application Information
 st.write("""
