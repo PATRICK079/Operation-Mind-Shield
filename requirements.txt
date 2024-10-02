@@ -3,3 +3,4 @@ streamlit
 catboost ==1.2.7
 joblib
 pandas
+scikit-learn
