@@ -19,8 +19,6 @@ def load_col():
     return col_name
 
 
-model = load_model()
-scaler = load_scaler()
 
 # Application Information
 st.write("""
