@@ -19,8 +19,8 @@ def load_col():
     return col_name
 
  model = load_model()
-    scaler = load_scaler()
-    col_names = load_col()
+ scaler = load_scaler()
+ col_names = load_col()
 
 # Application Information
 st.write("""
