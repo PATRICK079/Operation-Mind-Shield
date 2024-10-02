@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import joblib
 import traceback
+from sklearn.ensemble import GradientBoostingClassifier
+
 
 @st.cache_resource(show_spinner = "Loading model")
 def load_model():
