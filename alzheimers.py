@@ -23,6 +23,8 @@ def load_col():
 model = load_model()
 scaler = load_scaler()
 
+st.image("header.png")
+
 # Application Information
 st.write("""
 ### About this App 
