@@ -31,11 +31,8 @@ It uses a binary classification model, trained on a publicly available dataset [
 and Alzheimer's Disease diagnoses for 2,149 patients.
 
 ##### Model Details
-The prediction model is a Gradient Boosting Classifier. Initially, it was trained on all 32 features in the dataset, including 
-demographic information, lifestyle factors, medical history, clinical measurements, symptoms, and cognitive and 
-functional assessments. 
-
-After performing feature importance analysis, the following 5 features were identified as the most predictive:
+The prediction model is a CatBoost Classifier. After performing feature importance analysis with SelectKbest and correlation matrix, 
+the following 5 features were identified as the most predictors out of 32 predictors:
 
 - **Functional Assessment Score (FA)**: Between 0 and 10. Lower scores indicate greater impairment.
 - **Activities of Daily Living (ADL) Score**: Between 0 and 10. Lower scores indicate greater impairment.
@@ -43,8 +40,8 @@ After performing feature importance analysis, the following 5 features were iden
 - **Memory Complaints**: Indicates if the patient reports memory issues (Yes/No).
 - **Behavioral Problems**: Indicates if the patient has behavioral issues (Yes/No).
 
-The model was retrained using only these 5 key features and fine-tuned to match the performance of the original model 
-with all 32 features, achieving a mean accuracy of 95.57%, validated through k-fold cross-validation.
+The model was trained using only these 5 key features and fine-tuned thoroughly to match expectation,  achieving a mean accuracy of 95.81%,
+      validated through k-fold cross-validation.
 
 ##### Dataset Citation
 1. Rabie El Kharoua, _Alzheimer's Disease Dataset_, Kaggle, 2024, https://doi.org/10.34740/KAGGLE/DSV/8668279.
