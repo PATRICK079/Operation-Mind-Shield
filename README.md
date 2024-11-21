@@ -89,4 +89,46 @@ The app uses the trained CatBoost model to evaluate the input features.
 It returns a prediction whether a patient is likely to be diagnosed with Alzheimer's Disease.
 
 
-You can check out the Streamlit app here: https://operation-mind-shield-mjz3fvpkbgn5bphhsb2ymj.streamlit.app/.
+You can check out the Streamlit app here: https://operation-mind-shield-mjz3fvpkbgn5bphhsb2ymj.streamlit.app/
+
+You can access the Flask API deployment here:
+
+Flask API Docker Deployment
+AWS Elastic Beanstalk Deployment:
+http://alzhimer-detection.eu-west-1.elasticbeanstalk.com
+
+# 🧠 How It Works:
+
+The API accepts diagnostic data (such as scores from the Mini-Mental State Exam (MMSE) and Activities of Daily Living (ADL)) and returns a prediction of Alzheimer’s disease risk.
+Below is a sample Python request that sends data to the API for prediction:
+
+API CALL = alzheimers_dectection
+
+import requests
+url = 'http://alzhimer-detection.eu-west-1.elasticbeanstalk.com/alzheimers_dectection'
+
+
+data = [{
+
+    "Functional Assessment Score (0-10)": 3,
+    
+    "Activities of Daily Living (ADL) Score (0-10)": 7,
+    
+    "Mini-Mental State Exam (MMSE) Score (0-30)": 8,
+    
+    "Memory Complaints(Yes=1 No=0)": 1,
+    
+    "Behavioral Problems(Yes=1 No=0)": 1    
+    
+}]
+headers = {'Content-Type': 'application/json'}
+
+response = requests.post(url, json=data, headers=headers)
+
+print(response.json())
+
+
+
+
+
+
