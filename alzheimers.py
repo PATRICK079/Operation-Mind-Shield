@@ -6,17 +6,17 @@ import traceback
 
 @st.cache_resource(show_spinner = "Loading model")
 def load_model():
-    model = joblib.load("final_model_cat.pk1")
+    model = joblib.load("/Users/sot/Documents/deployment_dock/final_model_cat.pk1")
     return model
 
 @st.cache_resource(show_spinner = "Loading scaler")
 def load_scaler():
-    scaler = joblib.load("final_scaler_cat.pk1")
+    scaler = joblib.load("/Users/sot/Documents/deployment_dock/final_scaler_cat.pk1")
     return scaler
 
 @st.cache_resource(show_spinner = "Loading col")
 def load_col():
-    col_name  = joblib.load("col_names_cat.pk1")
+    col_name  = joblib.load("/Users/sot/Documents/deployment_dock/col_names_cat.pk1")
     return col_name
 
 
