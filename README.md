@@ -105,10 +105,12 @@ Below is a sample Python request that sends data to the API for prediction:
 API CALL = alzheimers_dectection
 
 import requests
-url = 'http://alzhimer-detection.eu-west-1.elasticbeanstalk.com/alzheimers_dectection'
+
+url ='http://alzheimer-detection-dev.eu-west-1.elasticbeanstalk.com/alzheimers_dectection'
 
 
-data = [{
+
+     data = [{
 
     "Functional Assessment Score (0-10)": 3,
     
@@ -120,12 +122,14 @@ data = [{
     
     "Behavioral Problems(Yes=1 No=0)": 1    
     
-}]
-headers = {'Content-Type': 'application/json'}
+    }]
+    headers = {'Content-Type': 'application/json'}
 
-response = requests.post(url, json=data, headers=headers)
+      response = requests.post(url, json=data, headers=headers)
 
-print(response.json())
+      print(response.json())
+
+
 
 
 
