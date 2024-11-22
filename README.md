@@ -95,7 +95,7 @@ You can access the Flask API deployment here:
 
 Flask API Docker Deployment
 AWS Elastic Beanstalk Deployment:
-http://alzhimer-detection.eu-west-1.elasticbeanstalk.com
+http://alzheimer-detection-dev.eu-west-1.elasticbeanstalk.com
 
 # 🧠 How It Works:
 
@@ -104,11 +104,9 @@ Below is a sample Python request that sends data to the API for prediction:
 
 API CALL = alzheimers_dectection
 
-import requests
+    import requests
 
-url ='http://alzheimer-detection-dev.eu-west-1.elasticbeanstalk.com/alzheimers_dectection'
-
-
+    url ='http://alzheimer-detection-dev.eu-west-1.elasticbeanstalk.com/alzheimers_dectection'
 
      data = [{
 
