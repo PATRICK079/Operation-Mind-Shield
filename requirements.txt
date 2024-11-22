@@ -1,6 +1,5 @@
-numpy==1.24.0
+
 scikit-learn==1.3.0
-streamlit
 nltk==3.6.5
 setuptools==65.5.0
 Flask==2.0.1
@@ -8,9 +7,10 @@ Werkzeug==2.0.3
 gunicorn
 Flask-CORS==3.0.10
 pandas>=1.5.0
-joblib 
-catboost
+joblib
 wheel
-
+catboost==1.2.7
+numpy==1.26.4
+streamlit==1.38.0
 
 
