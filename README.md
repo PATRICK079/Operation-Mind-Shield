@@ -129,7 +129,7 @@ API CALL = alzheimers_dectection
 
 
 
-
+PLEASE NOTE: The AWS instance for the project has just been terminated, it was active for about 48 hours before termination, but I’m happy to set up a new instance for anyone interested in testing it out. If you’d like to interact with the Flask API or explore its functionality, simply let me know, and I’ll provide a fresh link!
 
 
 
